@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fzc-IR-LNq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="34U-A8-DuU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Swipe View Controller-->
+        <scene sceneID="hkh-Nh-on1">
+            <objects>
+                <pageViewController storyboardIdentifier="SwipeViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="34U-A8-DuU" customClass="SwipeViewController" customModule="Snapclone" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7H-qp-1tN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17" y="-106"/>
+        </scene>
         <!--Bubble Collection View Controller-->
         <scene sceneID="8Sh-t3-2ay">
             <objects>
-                <collectionViewController id="fzc-IR-LNq" customClass="BubbleCollectionViewController" customModule="Snapclone" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="BubbleViewController" id="fzc-IR-LNq" customClass="BubbleCollectionViewController" customModule="Snapclone" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="XhV-dg-jET">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,12 +60,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNR-c0-qZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="341" y="359"/>
+            <point key="canvasLocation" x="-357" y="551"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="6kh-8p-CzO">
             <objects>
-                <viewController id="XX4-bl-MED" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraViewController" id="XX4-bl-MED" customClass="CameraViewController" customModule="Snapclone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fC7-ZT-HL8"/>
                         <viewControllerLayoutGuide type="bottom" id="HSv-kC-yg0"/>
@@ -81,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA1-x4-LAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025" y="359"/>
+            <point key="canvasLocation" x="327" y="551"/>
         </scene>
     </scenes>
 </document>

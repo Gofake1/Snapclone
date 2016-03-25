@@ -25,14 +25,6 @@ class BubbleCollectionViewController: UICollectionViewController {
         self.collectionView!.backgroundColor = UIColor.blackColor()
         self.collectionView!.contentInset = UIEdgeInsetsMake(15, 0, 0, 0)
     }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        if (self.collectionView?.backgroundColor == UIColor.blackColor()) {
-            return .LightContent
-        } else {
-            return .Default
-        }
-    }
 
     // MARK: UICollectionViewDataSource
 
