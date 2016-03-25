@@ -1,25 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fzc-IR-LNq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Bubble Collection View Controller-->
+        <scene sceneID="8Sh-t3-2ay">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <collectionViewController id="fzc-IR-LNq" customClass="BubbleCollectionViewController" customModule="Snapclone" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" id="XhV-dg-jET">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V7N-Df-HXL">
+                            <size key="itemSize" width="65" height="65"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Bubble" id="gav-Yx-d0w" customClass="BubbleCollectionViewCell" customModule="Snapclone" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Ke-fl-i4q">
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="8Ke-fl-i4q" firstAttribute="leading" secondItem="gav-Yx-d0w" secondAttribute="leading" id="5yf-YI-gTP"/>
+                                    <constraint firstItem="8Ke-fl-i4q" firstAttribute="top" secondItem="gav-Yx-d0w" secondAttribute="top" id="J6q-In-pe7"/>
+                                    <constraint firstItem="8Ke-fl-i4q" firstAttribute="centerY" secondItem="gav-Yx-d0w" secondAttribute="centerY" id="c3S-pQ-dsN"/>
+                                    <constraint firstItem="8Ke-fl-i4q" firstAttribute="centerX" secondItem="gav-Yx-d0w" secondAttribute="centerX" id="dWP-K8-HDZ"/>
+                                </constraints>
+                                <size key="customSize" width="65" height="65"/>
+                                <connections>
+                                    <outlet property="image" destination="8Ke-fl-i4q" id="eEA-C0-mu8"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="fzc-IR-LNq" id="Fkc-tQ-roz"/>
+                            <outlet property="delegate" destination="fzc-IR-LNq" id="P1X-2J-9jK"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNR-c0-qZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="359"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6kh-8p-CzO">
+            <objects>
+                <viewController id="XX4-bl-MED" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fC7-ZT-HL8"/>
+                        <viewControllerLayoutGuide type="bottom" id="HSv-kC-yg0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zs1-IL-00T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPo-2o-UkD">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hPo-2o-UkD" firstAttribute="bottom" secondItem="HSv-kC-yg0" secondAttribute="top" id="1ol-5N-c60"/>
+                            <constraint firstItem="hPo-2o-UkD" firstAttribute="top" secondItem="Zs1-IL-00T" secondAttribute="top" id="6yM-AO-GhP"/>
+                            <constraint firstItem="hPo-2o-UkD" firstAttribute="leading" secondItem="Zs1-IL-00T" secondAttribute="leading" id="V2R-NG-55z"/>
+                            <constraint firstAttribute="trailing" secondItem="hPo-2o-UkD" secondAttribute="trailing" id="cD3-nd-BmE"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EA1-x4-LAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1025" y="359"/>
         </scene>
     </scenes>
 </document>

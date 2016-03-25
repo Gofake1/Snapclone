@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4A41E81B1C8B8751006B5251 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A41E81A1C8B8751006B5251 /* AppDelegate.swift */; };
-		4A41E81D1C8B8751006B5251 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A41E81C1C8B8751006B5251 /* ViewController.swift */; };
 		4A41E8201C8B8751006B5251 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A41E81E1C8B8751006B5251 /* Main.storyboard */; };
 		4A41E8221C8B8751006B5251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A41E8211C8B8751006B5251 /* Assets.xcassets */; };
 		4A41E8251C8B8751006B5251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A41E8231C8B8751006B5251 /* LaunchScreen.storyboard */; };
+		4A44CB861CA31DBE00E73C0F /* BubbleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44CB851CA31DBE00E73C0F /* BubbleCollectionViewController.swift */; };
+		4A44CB8A1CA329C300E73C0F /* BubbleCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44CB891CA329C300E73C0F /* BubbleCollectionViewLayout.swift */; };
+		4AFE02AD1CA52C24005590C9 /* BubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE02AC1CA52C24005590C9 /* BubbleCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4A41E8171C8B8751006B5251 /* Snapclone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snapclone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A41E81A1C8B8751006B5251 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4A41E81C1C8B8751006B5251 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4A41E81F1C8B8751006B5251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A41E8211C8B8751006B5251 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A41E8241C8B8751006B5251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A41E8261C8B8751006B5251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A44CB851CA31DBE00E73C0F /* BubbleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCollectionViewController.swift; sourceTree = "<group>"; };
+		4A44CB891CA329C300E73C0F /* BubbleCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCollectionViewLayout.swift; sourceTree = "<group>"; };
+		4AFE02AC1CA52C24005590C9 /* BubbleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +59,12 @@
 			isa = PBXGroup;
 			children = (
 				4A41E81A1C8B8751006B5251 /* AppDelegate.swift */,
-				4A41E81C1C8B8751006B5251 /* ViewController.swift */,
+				4A44CB851CA31DBE00E73C0F /* BubbleCollectionViewController.swift */,
+				4A44CB891CA329C300E73C0F /* BubbleCollectionViewLayout.swift */,
+				4AFE02AC1CA52C24005590C9 /* BubbleCollectionViewCell.swift */,
 				4A41E81E1C8B8751006B5251 /* Main.storyboard */,
-				4A41E8211C8B8751006B5251 /* Assets.xcassets */,
 				4A41E8231C8B8751006B5251 /* LaunchScreen.storyboard */,
+				4A41E8211C8B8751006B5251 /* Assets.xcassets */,
 				4A41E8261C8B8751006B5251 /* Info.plist */,
 			);
 			path = Snapclone;
@@ -96,7 +102,6 @@
 				TargetAttributes = {
 					4A41E8161C8B8751006B5251 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = W6KLMFETUQ;
 					};
 				};
 			};
@@ -136,7 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A41E81D1C8B8751006B5251 /* ViewController.swift in Sources */,
+				4AFE02AD1CA52C24005590C9 /* BubbleCollectionViewCell.swift in Sources */,
+				4A44CB8A1CA329C300E73C0F /* BubbleCollectionViewLayout.swift in Sources */,
+				4A44CB861CA31DBE00E73C0F /* BubbleCollectionViewController.swift in Sources */,
 				4A41E81B1C8B8751006B5251 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +257,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Snapclone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.gofake1.Snapclone;
@@ -261,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Snapclone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.gofake1.Snapclone;
@@ -287,6 +296,7 @@
 				4A41E82B1C8B8751006B5251 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
