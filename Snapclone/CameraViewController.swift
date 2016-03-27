@@ -9,12 +9,13 @@
 import UIKit
 
 class CameraViewController: UIViewController {
-
+    let imagePicker = UIImagePickerController()
+    @IBOutlet weak var cameraImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.blackColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +23,17 @@ class CameraViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cameraButtonTapped(sender: RoundButton) {
+        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
+            if (UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil) {
+                imagePicker.sourceType = .Camera
+                imagePicker.cameraCaptureMode = .Photo
+                presentViewController(imagePicker, animated: true, completion: nil)
+            } else {
+                
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

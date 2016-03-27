@@ -22,8 +22,11 @@ class BubbleCollectionViewController: UICollectionViewController {
         self.collectionView!.registerClass(BubbleCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        self.collectionView!.backgroundColor = UIColor.blackColor()
+        // Status bar
         self.collectionView!.contentInset = UIEdgeInsetsMake(15, 0, 0, 0)
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        blurView.frame = CGRectMake(0, 0, self.view.frame.width, 20)
+        self.view.addSubview(blurView)
     }
 
     // MARK: UICollectionViewDataSource

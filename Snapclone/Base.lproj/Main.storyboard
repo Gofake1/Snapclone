@@ -77,15 +77,42 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hPo-2o-UkD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvn-Od-C4a" customClass="RoundButton" customModule="Snapclone" customModuleProvider="target">
+                                <rect key="frame" x="268" y="515" width="65" height="65"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="1ps-3i-3rg"/>
+                                    <constraint firstAttribute="width" constant="65" id="ppV-KU-9qf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="32.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cameraButtonTapped:" destination="XX4-bl-MED" eventType="touchUpInside" id="QC9-SD-bOX"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hPo-2o-UkD" firstAttribute="bottom" secondItem="HSv-kC-yg0" secondAttribute="top" id="1ol-5N-c60"/>
                             <constraint firstItem="hPo-2o-UkD" firstAttribute="top" secondItem="Zs1-IL-00T" secondAttribute="top" id="6yM-AO-GhP"/>
                             <constraint firstItem="hPo-2o-UkD" firstAttribute="leading" secondItem="Zs1-IL-00T" secondAttribute="leading" id="V2R-NG-55z"/>
+                            <constraint firstItem="HSv-kC-yg0" firstAttribute="top" secondItem="cvn-Od-C4a" secondAttribute="bottom" constant="20" id="VxB-L9-hQj"/>
                             <constraint firstAttribute="trailing" secondItem="hPo-2o-UkD" secondAttribute="trailing" id="cD3-nd-BmE"/>
+                            <constraint firstItem="cvn-Od-C4a" firstAttribute="centerX" secondItem="hPo-2o-UkD" secondAttribute="centerX" id="wbH-JN-3rh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraImage" destination="hPo-2o-UkD" id="ebE-B9-iVL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EA1-x4-LAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

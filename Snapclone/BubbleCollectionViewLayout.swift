@@ -47,8 +47,8 @@ class BubbleCollectionViewLayout: UICollectionViewFlowLayout {
     override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         let delta = newBounds.origin.y - self.collectionView!.bounds.origin.y
         let touchLocation = self.collectionView?.panGestureRecognizer.locationInView(self.collectionView)
-        for (_, element) in self.animator.behaviors.enumerate() {
-            let springBehavior = element as! UIAttachmentBehavior
+        for behavior in self.animator.behaviors {
+            let springBehavior = behavior as! UIAttachmentBehavior
             let yDistanceFromTouch = CGFloat(fabsf(Float(touchLocation!.y) - Float(springBehavior.anchorPoint.y)))
             let xDistanceFromTouch = CGFloat(fabsf(Float(touchLocation!.x) - Float(springBehavior.anchorPoint.x)))
             let scrollResistance: CGFloat = (yDistanceFromTouch + xDistanceFromTouch) / 1500.0
