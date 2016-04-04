@@ -23,7 +23,7 @@ class CameraViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cameraButtonTapped(sender: RoundButton) {
+    @IBAction func cameraButtonTapped(sender: CameraButton) {
         if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
             if (UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil) {
                 imagePicker.sourceType = .Camera
@@ -45,4 +45,42 @@ class CameraViewController: UIViewController {
     }
     */
 
+}
+
+@IBDesignable
+class CameraButton: UIButton {
+    @IBInspectable
+    var borderColor: UIColor = UIColor.whiteColor() {
+        didSet {
+            self.layer.borderColor = borderColor.CGColor
+        }
+    }
+    
+    @IBInspectable
+    var borderWidth: CGFloat = 0.0 {
+        didSet {
+            self.layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable
+    var cornerRadius: CGFloat = 0.0 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.clipsToBounds = true
+    }
+    
+    /*
+     // Only override drawRect: if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func drawRect(rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

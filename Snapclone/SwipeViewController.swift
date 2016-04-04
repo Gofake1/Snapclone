@@ -16,11 +16,16 @@ class SwipeViewController: UIPageViewController {
 
         // Do any additional setup after loading the view.
         self.dataSource = self
-        self.controllers = [(storyboard?.instantiateViewControllerWithIdentifier("BubbleViewController"))!,
+        self.controllers = [(storyboard?.instantiateViewControllerWithIdentifier("SettingsViewController"))!,
+                            (storyboard?.instantiateViewControllerWithIdentifier("BubbleViewController"))!,
                             (storyboard?.instantiateViewControllerWithIdentifier("CameraViewController"))!]
         if let firstController = controllers.first {
             setViewControllers([firstController], direction: .Forward, animated: true, completion: nil)
         }
+        // Status bar blur
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        blurView.frame = CGRectMake(0, 0, self.view.frame.width, 20)
+        self.view.addSubview(blurView)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

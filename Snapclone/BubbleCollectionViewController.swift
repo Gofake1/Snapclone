@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Bubble"
 
-class BubbleCollectionViewController: UICollectionViewController {
+class BubbleCollectionViewController: UICollectionViewController, Dimmable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +22,18 @@ class BubbleCollectionViewController: UICollectionViewController {
         self.collectionView!.registerClass(BubbleCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        // Status bar
+        // Push content below status bar
         self.collectionView!.contentInset = UIEdgeInsetsMake(15, 0, 0, 0)
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
-        blurView.frame = CGRectMake(0, 0, self.view.frame.width, 20)
-        self.view.addSubview(blurView)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        dim(.In, alpha: 0.5, speed: 0.5)
+    }
+    
+    @IBAction func unwindFromSegue(segue: UIStoryboardSegue) {
+        dim(.Out, speed: 0.5)
     }
 
     // MARK: UICollectionViewDataSource
@@ -54,13 +61,10 @@ class BubbleCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("bubbleSelected", sender: self)
     }
-    */
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

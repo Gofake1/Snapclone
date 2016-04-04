@@ -16,7 +16,8 @@
 		4AFE02AD1CA52C24005590C9 /* BubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE02AC1CA52C24005590C9 /* BubbleCollectionViewCell.swift */; };
 		4AFE02B51CA54CE9005590C9 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE02B41CA54CE9005590C9 /* CameraViewController.swift */; };
 		4AFE02B71CA554C8005590C9 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE02B61CA554C8005590C9 /* SwipeViewController.swift */; };
-		4AFE02B91CA63A2F005590C9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE02B81CA63A2F005590C9 /* RoundButton.swift */; };
+		4AFE02BB1CA7C46C005590C9 /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE02BA1CA7C46C005590C9 /* Dimmable.swift */; };
+		4AFE02BF1CA7CB78005590C9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFE02BE1CA7CB78005590C9 /* ModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +32,8 @@
 		4AFE02AC1CA52C24005590C9 /* BubbleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AFE02B41CA54CE9005590C9 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		4AFE02B61CA554C8005590C9 /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
-		4AFE02B81CA63A2F005590C9 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		4AFE02BA1CA7C46C005590C9 /* Dimmable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
+		4AFE02BE1CA7CB78005590C9 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,12 +67,13 @@
 			isa = PBXGroup;
 			children = (
 				4A41E81A1C8B8751006B5251 /* AppDelegate.swift */,
+				4AFE02B61CA554C8005590C9 /* SwipeViewController.swift */,
 				4A44CB851CA31DBE00E73C0F /* BubbleCollectionViewController.swift */,
 				4A44CB891CA329C300E73C0F /* BubbleCollectionViewLayout.swift */,
 				4AFE02AC1CA52C24005590C9 /* BubbleCollectionViewCell.swift */,
+				4AFE02BE1CA7CB78005590C9 /* ModalViewController.swift */,
 				4AFE02B41CA54CE9005590C9 /* CameraViewController.swift */,
-				4AFE02B61CA554C8005590C9 /* SwipeViewController.swift */,
-				4AFE02B81CA63A2F005590C9 /* RoundButton.swift */,
+				4AFE02BA1CA7C46C005590C9 /* Dimmable.swift */,
 				4A41E81E1C8B8751006B5251 /* Main.storyboard */,
 				4A41E8231C8B8751006B5251 /* LaunchScreen.storyboard */,
 				4A41E8211C8B8751006B5251 /* Assets.xcassets */,
@@ -152,10 +155,11 @@
 			files = (
 				4AFE02AD1CA52C24005590C9 /* BubbleCollectionViewCell.swift in Sources */,
 				4A44CB8A1CA329C300E73C0F /* BubbleCollectionViewLayout.swift in Sources */,
-				4AFE02B91CA63A2F005590C9 /* RoundButton.swift in Sources */,
 				4A44CB861CA31DBE00E73C0F /* BubbleCollectionViewController.swift in Sources */,
+				4AFE02BB1CA7C46C005590C9 /* Dimmable.swift in Sources */,
 				4AFE02B51CA54CE9005590C9 /* CameraViewController.swift in Sources */,
 				4A41E81B1C8B8751006B5251 /* AppDelegate.swift in Sources */,
+				4AFE02BF1CA7CB78005590C9 /* ModalViewController.swift in Sources */,
 				4AFE02B71CA554C8005590C9 /* SwipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
