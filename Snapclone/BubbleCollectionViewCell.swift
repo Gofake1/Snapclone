@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable
 class BubbleCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var imageView: BubbleImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var iconView: UIImageView!
 }

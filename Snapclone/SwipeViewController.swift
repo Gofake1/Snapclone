@@ -31,27 +31,16 @@ class SwipeViewController: UIPageViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 // MARK: UIPageViewControllerDataSource
 
 extension SwipeViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = self.controllers.indexOf(viewController) else {
+        guard let index = self.controllers.indexOf(viewController) else {
             return nil
         }
-        let previousIndex = currentIndex-1
+        let previousIndex = index-1
         guard previousIndex >= 0 else {
             return nil
         }
@@ -62,10 +51,10 @@ extension SwipeViewController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = self.controllers.indexOf(viewController) else {
+        guard let index = self.controllers.indexOf(viewController) else {
             return nil
         }
-        let nextIndex = currentIndex+1
+        let nextIndex = index+1
         guard self.controllers.count != nextIndex else {
             return nil
         }
