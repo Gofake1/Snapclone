@@ -20,12 +20,12 @@ class FriendTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         //let groupButton = UIBarButtonItem(title: "Group", style: .Plain, target: self, action: #selector(FriendTableViewController.makeGroupFromFriends))
         //let spaceItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
         //let buttons = [groupButton, spaceItem]
         //self.navigationController?.setToolbarItems(buttons, animated: true)
-        self.toolbar.hidden = true
+        self.toolbar.isHidden = true
     }
 
     func makeGroupFromFriends() {
@@ -36,11 +36,11 @@ class FriendTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
             return self.groups.count
         } else {
@@ -48,24 +48,24 @@ class FriendTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if (indexPath.section == 0) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("groupCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if ((indexPath as NSIndexPath).section == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
             let keys = Array(self.groups.keys)
-            let title = keys[indexPath.row]
-            let subtitle = self.groups[title]?.joinWithSeparator(", ")
+            let title = keys[(indexPath as NSIndexPath).row]
+            let subtitle = self.groups[title]?.joined(separator: ", ")
             cell.textLabel!.text = title
             cell.detailTextLabel!.text = subtitle
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath)
-            cell.textLabel!.text = self.friends[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath)
+            cell.textLabel!.text = self.friends[(indexPath as NSIndexPath).row]
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (section == 0) {
             return "Groups"
         } else {
@@ -73,41 +73,41 @@ class FriendTableViewController: UITableViewController {
         }
     }
     
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         if (editing) {
             //self.navigationController?.setToolbarHidden(false, animated: true)
-            self.toolbar.hidden = false
+            self.toolbar.isHidden = false
         } else {
             //self.navigationController?.setToolbarHidden(true, animated: true)
-            self.toolbar.hidden = true
+            self.toolbar.isHidden = true
         }
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
-            if (indexPath.section == 0) {
+            if ((indexPath as NSIndexPath).section == 0) {
                 let keys = Array(self.groups.keys)
-                self.groups.removeValueForKey(keys[indexPath.row])
+                self.groups.removeValue(forKey: keys[(indexPath as NSIndexPath).row])
             } else {
-                self.friends.removeAtIndex(indexPath.row)
+                self.friends.remove(at: (indexPath as NSIndexPath).row)
             }
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
 
     // MARK: - Navigation
 
-    @IBAction func unwindToSettings(sender: UIBarButtonItem) {
-        self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func unwindToSettings(_ sender: UIBarButtonItem) {
+        self.parent?.dismiss(animated: true, completion: nil)
     }
 
     /*

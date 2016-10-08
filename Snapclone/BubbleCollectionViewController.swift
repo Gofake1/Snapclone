@@ -44,42 +44,42 @@ class BubbleCollectionViewController: UICollectionViewController, UIGestureRecog
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        dim(.In, alpha: 0.5, speed: 0.5)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        dim(.in, alpha: 0.5, speed: 0.5)
     }
     
-    @IBAction func unwindFromSegue(segue: UIStoryboardSegue) {
-        dim(.Out, speed: 0.5)
+    @IBAction func unwindFromSegue(_ segue: UIStoryboardSegue) {
+        dim(.out, speed: 0.5)
     }
     
-    @IBAction func tapDetected(sender: UITapGestureRecognizer) {
-        if (sender.state == .Ended) {
-            let location = sender.locationInView(self.collectionView)
-            if let indexPath = self.collectionView?.indexPathForItemAtPoint(location) {
-                if (indexPath.section == 0 && (indexPath.row == 0 || indexPath.row == 1)) {
-                    self.performSegueWithIdentifier("bubbleTapped", sender: self)
+    @IBAction func tapDetected(_ sender: UITapGestureRecognizer) {
+        if (sender.state == .ended) {
+            let location = sender.location(in: self.collectionView)
+            if let indexPath = self.collectionView?.indexPathForItem(at: location) {
+                if ((indexPath as NSIndexPath).section == 0 && ((indexPath as NSIndexPath).row == 0 || (indexPath as NSIndexPath).row == 1)) {
+                    self.performSegue(withIdentifier: "bubbleTapped", sender: self)
                 }
             }
         }
     }
 
-    @IBAction func longPressDetected(sender: UILongPressGestureRecognizer) {
-        if (sender.state == .Ended) {
-            let location = sender.locationInView(self.collectionView)
-            if let indexPath = self.collectionView?.indexPathForItemAtPoint(location) {
-                if (indexPath.section == 0) {
-                    self.performSegueWithIdentifier("bubbleLongPressed", sender: self)
+    @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer) {
+        if (sender.state == .ended) {
+            let location = sender.location(in: self.collectionView)
+            if let indexPath = self.collectionView?.indexPathForItem(at: location) {
+                if ((indexPath as NSIndexPath).section == 0) {
+                    self.performSegue(withIdentifier: "bubbleLongPressed", sender: self)
                 }
             }
         }
     }
     
-    @IBAction func doubleTapDetected(sender: UITapGestureRecognizer) {
-        if (sender.state == .Ended) {
-            let location = sender.locationInView(self.collectionView)
-            if let indexPath = self.collectionView?.indexPathForItemAtPoint(location) {
-                if (indexPath.section == 0) {
-                    self.performSegueWithIdentifier("bubbleDoubleTapped", sender: self)
+    @IBAction func doubleTapDetected(_ sender: UITapGestureRecognizer) {
+        if (sender.state == .ended) {
+            let location = sender.location(in: self.collectionView)
+            if let indexPath = self.collectionView?.indexPathForItem(at: location) {
+                if ((indexPath as NSIndexPath).section == 0) {
+                    self.performSegue(withIdentifier: "bubbleDoubleTapped", sender: self)
                 }
             }
         }
@@ -87,15 +87,15 @@ class BubbleCollectionViewController: UICollectionViewController, UIGestureRecog
     
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = self.collectionView?.dequeueReusableSupplementaryViewOfKind("UICollectionElementKindSectionHeader", withReuseIdentifier: "sectionHeader", forIndexPath: indexPath) as! BubbleCollectionHeaderView
-        if (indexPath.section == 0) {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = self.collectionView?.dequeueReusableSupplementaryView(ofKind: "UICollectionElementKindSectionHeader", withReuseIdentifier: "sectionHeader", for: indexPath) as! BubbleCollectionHeaderView
+        if ((indexPath as NSIndexPath).section == 0) {
             header.sectionHeaderLabel.text = "Friends"
-        } else if (indexPath.section == 1) {
+        } else if ((indexPath as NSIndexPath).section == 1) {
             header.sectionHeaderLabel.text = "Discover"
         } else {
             header.sectionHeaderLabel.text = "My Story"
@@ -103,29 +103,29 @@ class BubbleCollectionViewController: UICollectionViewController, UIGestureRecog
         return header
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data[section].count
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Bubble", forIndexPath: indexPath) as! BubbleCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Bubble", for: indexPath) as! BubbleCollectionViewCell
         
         // Configure the cell
         let h = CGFloat(arc4random() % 256)/256
         let s = CGFloat(arc4random() % 30)/100 + 0.4
-        if (self.data[indexPath.section][indexPath.row]["photo"]! != "") {
-            cell.imageView.image = UIImage(named: self.data[indexPath.section][indexPath.row]["photo"]!)
+        if (self.data[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]["photo"]! != "") {
+            cell.imageView.image = UIImage(named: self.data[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]["photo"]!)
         } else {
             cell.imageView.backgroundColor = UIColor(hue: h, saturation: s, brightness: 0.95, alpha: 1.0)
         }
-        cell.nameLabel.text = self.data[indexPath.section][indexPath.row]["name"]!
-        if (indexPath.section == 0) {
-            if (self.data[indexPath.section][indexPath.row]["story"]! == "yes") {
-                cell.nameLabel.textColor = UIColor.yellowColor()
+        cell.nameLabel.text = self.data[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]["name"]!
+        if ((indexPath as NSIndexPath).section == 0) {
+            if (self.data[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]["story"]! == "yes") {
+                cell.nameLabel.textColor = UIColor.yellow
             }
         }
-        if (indexPath.section == 0 && self.data[indexPath.section][indexPath.row]["icon"]! != "") {
-            cell.iconView.image = UIImage(named: self.data[indexPath.section][indexPath.row]["icon"]!)
+        if ((indexPath as NSIndexPath).section == 0 && self.data[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]["icon"]! != "") {
+            cell.iconView.image = UIImage(named: self.data[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]["icon"]!)
         } else {
             cell.iconView.image = nil
         }

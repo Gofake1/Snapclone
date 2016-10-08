@@ -31,11 +31,11 @@ class SendTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (section == 0) {
             return self.groups.count
         } else {
@@ -43,34 +43,34 @@ class SendTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if (indexPath.section == 0) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("groupCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if ((indexPath as NSIndexPath).section == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
             let keys = Array(self.groups.keys)
-            let title = keys[indexPath.row]
-            let subtitle = self.groups[title]?.joinWithSeparator(", ")
+            let title = keys[(indexPath as NSIndexPath).row]
+            let subtitle = self.groups[title]?.joined(separator: ", ")
             cell.textLabel!.text = title
             cell.detailTextLabel!.text = subtitle
-            if (self.selectedGroups.contains(keys[indexPath.row])) {
-                cell.accessoryType = .Checkmark
+            if (self.selectedGroups.contains(keys[(indexPath as NSIndexPath).row])) {
+                cell.accessoryType = .checkmark
             } else {
-                cell.accessoryType = .None
+                cell.accessoryType = .none
             }
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath)
-            cell.textLabel!.text = self.friends[indexPath.row]
-            if (self.selected.contains(self.friends[indexPath.row])) {
-                cell.accessoryType = .Checkmark
+            let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath)
+            cell.textLabel!.text = self.friends[(indexPath as NSIndexPath).row]
+            if (self.selected.contains(self.friends[(indexPath as NSIndexPath).row])) {
+                cell.accessoryType = .checkmark
             } else {
-                cell.accessoryType = .None
+                cell.accessoryType = .none
             }
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (section == 0) {
             return "Groups"
         } else {
@@ -78,19 +78,19 @@ class SendTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if (indexPath.section == 0) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if ((indexPath as NSIndexPath).section == 0) {
             let keys = Array(self.groups.keys)
-            if (self.selectedGroups.contains(keys[indexPath.row])) {
-                self.selectedGroups.removeAtIndex(self.selectedGroups.indexOf(keys[indexPath.row])!)
+            if (self.selectedGroups.contains(keys[(indexPath as NSIndexPath).row])) {
+                self.selectedGroups.remove(at: self.selectedGroups.index(of: keys[(indexPath as NSIndexPath).row])!)
             } else {
-                self.selectedGroups.append(keys[indexPath.row])
+                self.selectedGroups.append(keys[(indexPath as NSIndexPath).row])
             }
         } else {
-            if (self.selected.contains(self.friends[indexPath.row])) {
-                self.selected.removeAtIndex(self.selected.indexOf(self.friends[indexPath.row])!)
+            if (self.selected.contains(self.friends[(indexPath as NSIndexPath).row])) {
+                self.selected.remove(at: self.selected.index(of: self.friends[(indexPath as NSIndexPath).row])!)
             } else {
-                self.selected.append(self.friends[indexPath.row])
+                self.selected.append(self.friends[(indexPath as NSIndexPath).row])
             }
         }
         tableView.reloadData()
@@ -98,12 +98,12 @@ class SendTableViewController: UITableViewController {
 
     // MARK: - Navigation
     
-    @IBAction func unwindToCamera(sender: UIBarButtonItem) {
-        self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func unwindToCamera(_ sender: UIBarButtonItem) {
+        self.parent?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func sendPhoto(sender: UIBarButtonItem) {
-        self.parentViewController?.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func sendPhoto(_ sender: UIBarButtonItem) {
+        self.parent?.dismiss(animated: true, completion: nil)
     }
     
     /*

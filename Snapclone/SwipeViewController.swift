@@ -16,28 +16,28 @@ class SwipeViewController: UIPageViewController {
 
         // Do any additional setup after loading the view.
         self.dataSource = self
-        self.controllers = [(storyboard?.instantiateViewControllerWithIdentifier("SettingsViewController"))!,
-                            (storyboard?.instantiateViewControllerWithIdentifier("BubbleViewController"))!,
-                            (storyboard?.instantiateViewControllerWithIdentifier("CameraViewController"))!]
+        self.controllers = [(storyboard?.instantiateViewController(withIdentifier: "SettingsViewController"))!,
+                            (storyboard?.instantiateViewController(withIdentifier: "BubbleViewController"))!,
+                            (storyboard?.instantiateViewController(withIdentifier: "CameraViewController"))!]
         if let firstController = controllers.first {
-            setViewControllers([firstController], direction: .Forward, animated: true, completion: nil)
+            setViewControllers([firstController], direction: .forward, animated: true, completion: nil)
         }
         // Status bar blur
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
-        blurView.frame = CGRectMake(0, 0, self.view.frame.width, 20)
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        blurView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 20)
         self.view.addSubview(blurView)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
 
 // MARK: UIPageViewControllerDataSource
 
 extension SwipeViewController: UIPageViewControllerDataSource {
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        guard let index = self.controllers.indexOf(viewController) else {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let index = self.controllers.index(of: viewController) else {
             return nil
         }
         let previousIndex = index-1
@@ -50,8 +50,8 @@ extension SwipeViewController: UIPageViewControllerDataSource {
         return self.controllers[previousIndex]
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard let index = self.controllers.indexOf(viewController) else {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let index = self.controllers.index(of: viewController) else {
             return nil
         }
         let nextIndex = index+1

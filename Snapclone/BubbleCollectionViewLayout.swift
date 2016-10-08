@@ -14,20 +14,19 @@ class BubbleCollectionViewLayout: UICollectionViewFlowLayout {
     override init() {
         super.init()
         self.animator = UIDynamicAnimator(collectionViewLayout: self)
-        print(self.animator)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func prepareLayout() {
-        super.prepareLayout()
-        let contentSize = self.collectionView!.collectionViewLayout.collectionViewContentSize()
-        let items: NSArray = super.layoutAttributesForElementsInRect(CGRectMake(0.0, 0.0, contentSize.width, contentSize.height))!
+    override func prepare() {
+        super.prepare()
+        let contentSize = self.collectionView!.collectionViewLayout.collectionViewContentSize
+        let items: NSArray = super.layoutAttributesForElements(in: CGRect(x: 0.0, y: 0.0, width: contentSize.width, height: contentSize.height))! as NSArray
         if (self.animator.behaviors.count == 0) {
-            items.enumerateObjectsUsingBlock({ (obj, idx, stop) in
-                let behavior = UIAttachmentBehavior(item: obj as! UIDynamicItem, attachedToAnchor: obj.center)
+            items.enumerateObjects({ (obj, idx, stop) in
+                let behavior = UIAttachmentBehavior(item: obj as! UIDynamicItem, attachedToAnchor: (obj as AnyObject).center)
                 behavior.length = 0.0
                 behavior.damping = 0.8
                 behavior.frequency = 1.0
@@ -36,17 +35,17 @@ class BubbleCollectionViewLayout: UICollectionViewFlowLayout {
         }
     }
 
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return self.animator.itemsInRect(rect) as? [UICollectionViewLayoutAttributes]
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return self.animator.items(in: rect) as? [UICollectionViewLayoutAttributes]
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return self.animator.layoutAttributesForCellAtIndexPath(indexPath)
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return self.animator.layoutAttributesForCell(at: indexPath)
     }
 
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         let delta = newBounds.origin.y - self.collectionView!.bounds.origin.y
-        let touchLocation = self.collectionView?.panGestureRecognizer.locationInView(self.collectionView)
+        let touchLocation = self.collectionView?.panGestureRecognizer.location(in: self.collectionView)
         for behavior in self.animator.behaviors {
             let springBehavior = behavior as! UIAttachmentBehavior
             let yDistanceFromTouch = CGFloat(fabsf(Float(touchLocation!.y) - Float(springBehavior.anchorPoint.y)))
@@ -60,7 +59,7 @@ class BubbleCollectionViewLayout: UICollectionViewFlowLayout {
                 _center.y += min(delta, delta*scrollResistance)
             }
             item.center = _center
-            self.animator.updateItemUsingCurrentState(item)
+            self.animator.updateItem(usingCurrentState: item)
         }
         
         return false

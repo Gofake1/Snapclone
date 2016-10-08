@@ -8,30 +8,30 @@
 
 import UIKit
 
-enum Direction { case In, Out }
+enum Direction { case `in`, out }
 
 protocol Dimmable {}
 
 extension Dimmable where Self: UIViewController {
-    func dim(direction: Direction, color: UIColor = UIColor.blackColor(), alpha: CGFloat = 0.0, speed: Double = 0.0) {
+    func dim(_ direction: Direction, color: UIColor = UIColor.black, alpha: CGFloat = 0.0, speed: Double = 0.0) {
         switch direction {
-        case .In:
+        case .in:
             let dimView = UIView(frame: self.view.frame)
             dimView.backgroundColor = color
             dimView.alpha = 0.0
             self.view.addSubview(dimView)
             
             dimView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
-            self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
             
-            UIView.animateWithDuration(speed, animations: {
+            UIView.animate(withDuration: speed, animations: {
                 dimView.alpha = alpha
             })
             
-        case .Out:
-            UIView.animateWithDuration(speed, animations: { 
-                self.view.subviews.last?.alpha = alpha ?? 0
+        case .out:
+            UIView.animate(withDuration: speed, animations: { 
+                self.view.subviews.last?.alpha = alpha 
                 }, completion: { (complete) in
                     self.view.subviews.last?.removeFromSuperview()
             })

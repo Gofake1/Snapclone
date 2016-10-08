@@ -19,11 +19,11 @@ class ModalViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func tapDetected(sender: UITapGestureRecognizer) {
-        let location = sender.locationInView(nil)
+    @IBAction func tapDetected(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: nil)
         // Hard coded for iPhone 5s
-        if (!CGRectContainsPoint(CGRectMake(40, 120, 240, 320), location)) {
-            self.performSegueWithIdentifier("unwindFromModal", sender: self)
+        if (!CGRect(x: 40, y: 120, width: 240, height: 320).contains(location)) {
+            self.performSegue(withIdentifier: "unwindFromModal", sender: self)
         }
     }
     
@@ -42,9 +42,9 @@ class ModalViewController: UIViewController {
 @IBDesignable
 class ModalVisualEffectView: UIVisualEffectView {
     @IBInspectable
-    var shadowColor: UIColor = UIColor.blackColor() {
+    var shadowColor: UIColor = UIColor.black {
         didSet {
-            self.layer.shadowColor = shadowColor.CGColor
+            self.layer.shadowColor = shadowColor.cgColor
         }
     }
     

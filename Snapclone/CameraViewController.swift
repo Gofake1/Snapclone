@@ -23,12 +23,12 @@ class CameraViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cameraButtonTapped(sender: CameraButton) {
-        if (UIImagePickerController.isSourceTypeAvailable(.Camera)) {
-            if (UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil) {
-                imagePicker.sourceType = .Camera
-                imagePicker.cameraCaptureMode = .Photo
-                presentViewController(imagePicker, animated: true, completion: nil)
+    @IBAction func cameraButtonTapped(_ sender: CameraButton) {
+        if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            if (UIImagePickerController.availableCaptureModes(for: .rear) != nil) {
+                imagePicker.sourceType = .camera
+                imagePicker.cameraCaptureMode = .photo
+                present(imagePicker, animated: true, completion: nil)
             } else {
                 
             }
@@ -50,9 +50,9 @@ class CameraViewController: UIViewController {
 @IBDesignable
 class CameraButton: UIButton {
     @IBInspectable
-    var borderColor: UIColor = UIColor.whiteColor() {
+    var borderColor: UIColor = UIColor.white {
         didSet {
-            self.layer.borderColor = borderColor.CGColor
+            self.layer.borderColor = borderColor.cgColor
         }
     }
     
