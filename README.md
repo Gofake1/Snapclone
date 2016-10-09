@@ -2,6 +2,7 @@
 Human Computer Interaction (CSE 40424) final project
 
 ![Snapclone screenshot](http://gofake1.net/images/snapchat.png)
+
 We thought the Snapchat app could use a more efficient design. In particular, we wanted to improve the workflow for reviewing snaps and messages. This is our UI prototype.
 
 Features:
